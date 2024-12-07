@@ -8,8 +8,8 @@ from keras.callbacks import EarlyStopping
 # Загрузка датасета
 df = pd.read_csv('df_hack_final.csv')
 
-# Датапрепарация
-df = df.dropna()  # Удаление строк с пропущенными значениями
+# Заполнение строк (медиана)
+df.iloc[:, 1:] = df.iloc[:, 1:].fillna(df.iloc[:, 1:].median())
 
 # Все признаки
 features = [
